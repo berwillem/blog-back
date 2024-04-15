@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const adminShema = new mongoose.Shema({
+const adminShema = new mongoose.Schema({
   username: {
     type: String,
     unique: true,
@@ -21,4 +21,4 @@ const adminShema = new mongoose.Shema({
     unique: true,
   },
 });
-module.exports =mongoose.model("Admin",adminShema)
+module.exports = mongoose.model("Admin", adminShema);
