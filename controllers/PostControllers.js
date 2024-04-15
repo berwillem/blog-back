@@ -2,10 +2,11 @@ const Post = require("./../models/Post");
 
 // Create post
 exports.createPost = async (req, res) => {
-  const { text, likes, author } = req.body;
+  const { text, title, likes, author } = req.body;
   const post = new Post({
     text,
     likes,
+    title,
     author,
   });
   try {
@@ -67,5 +68,19 @@ exports.deletePost = async (req, res) => {
     res.json({ message: "Post deleted" });
   } catch (err) {
     res.status(500).json({ message: err.message });
+  }
+};
+
+exports.likePost = async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    if (!post) {
+      return res.status(404).json({ error: "Post not found" });
+    }
+    post.likes++;
+    await post.save();
+    res.json(post);
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
   }
 };
