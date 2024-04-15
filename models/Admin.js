@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const adminShema = new mongoose.Shema({
+const adminShema = new mongoose.Schema({
   username: {
     type: String,
     unique: true,
