@@ -3,12 +3,14 @@ const mongoose =require("mongoose")
 require("dotenv").config();
 const userRoute = require('./routes/userroutes')
 const adminRoute = require('./routes/adminroutes')
+const postRoute = require('./routes/postroutes')
 const app = express();
 const cors = require('cors')
 
 app.use(express.json)
 app.use("/users",userRoute)
 app.use("/admin",adminRoute)
+app.use("/posts",postRoute)
 
 
 app.listen(process.env.PORT,()=>{

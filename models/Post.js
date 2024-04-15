@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const postShema = new mongoose.Shema({
+const postShema = new mongoose.Schema({
  text: {
     type: String,
   },
