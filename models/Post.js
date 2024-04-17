@@ -14,5 +14,6 @@ const postShema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
+  images: [],
 });
 module.exports = mongoose.model("Post", postShema);

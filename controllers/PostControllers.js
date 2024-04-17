@@ -3,12 +3,18 @@ const Post = require("./../models/Post");
 // Create post
 exports.createPost = async (req, res) => {
   const { text, title, likes, author } = req.body;
+  const images = req.files.map((file) => {
+    return `http://localhost:5000/uploads/${file.filename}`;
+  });
+
   const post = new Post({
     text,
     likes,
     title,
     author,
+    images: images,
   });
+
   try {
     const savedPost = await post.save();
     res.json(savedPost);
@@ -16,7 +22,6 @@ exports.createPost = async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 };
-
 // Read post
 exports.readAllPosts = async (req, res) => {
   try {
